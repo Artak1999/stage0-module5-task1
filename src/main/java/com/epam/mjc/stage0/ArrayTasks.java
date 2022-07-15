@@ -62,8 +62,10 @@ public class ArrayTasks {
     public int findIndexOfNumber(int[] arr, int number) {
         int index = -1;
         for (int i = 0; i < arr.length; i++) {
-            if(arr[i] == number)
+            if(arr[i] == number) {
                 index = i;
+                break;
+            }
         }
         return index;
     }
@@ -78,12 +80,13 @@ public class ArrayTasks {
      * arr = ["pineapple", "apple", "pen"] -> ["pen", "apple", "pineapple"]
      */
     public String[] reverseArray(String[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            String s = arr[0];
-            arr[0] = arr[arr.length-1];
-            arr[arr.length-1] = s;
+        String[] newArr = new String[arr.length];
+        int j = arr.length;
+        for (int i=0; i<arr.length; i++){
+            newArr[j-1] = arr[i];
+            j -= 1;
         }
-        return arr;
+        return newArr;
     }
 
     /**
@@ -100,11 +103,19 @@ public class ArrayTasks {
     public int[] getOnlyPositiveNumbers(int[] arr) {
         int[] newArray = new int[arr.length];
         int j = 0;
-        for (int i : arr) {
-            if (i > 0)
-                newArray[j++] = i;
+        int count = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] > 0){
+                newArray[j++] = arr[i];
+                count++;
+            }
         }
-        return newArray;
+        j = 0;
+        int[] array = new int[count];
+        for (int i = 0; i < array.length; i++) {
+            array[i] = newArray[j++];
+        }
+        return array;
     }
 
     /**
@@ -118,6 +129,7 @@ public class ArrayTasks {
      * arr = [[5, 4], [7]]       -> [[7], [4, 5]]
      */
     public int[][] sortRaggedArray(int[][] arr) {
+
         return arr;
     }
 }
