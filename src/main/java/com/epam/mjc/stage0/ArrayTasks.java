@@ -129,38 +129,22 @@ public class ArrayTasks {
      * arr = [[5, 4], [7]]       -> [[7], [4, 5]]
      */
     public int[][] sortRaggedArray(int[][] arr) {
-        for (int i=0; i<arr.length; i++){
-            for (int j=0; j<arr[i].length; j++){
-                for (int k=0; k<arr[i].length; k++){
-                    if(arr[i][j] < arr[i][k]){
-                        int temp = arr[i][j];
-                        arr[i][j] = arr[i][k];
-                        arr[i][k] = temp;
-                    }
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 1; j < arr.length; j++) {
+                if (arr[j - 1].length > arr[j].length) {
+                    int[] temp = arr[j - 1];
+                    arr[j - 1] = arr[j];
+                    arr[j] = temp;
                 }
             }
         }
-        for (int i=0; i<arr.length; i++){
-            for (int j=0; j<arr.length; j++){
-                if(arr[i].length < arr[j].length){
-                    int[] first = new int[arr[i].length];
-                    int[] second = new int[arr[j].length];
-                    for (int k=0; k<arr[i].length; k++){
-                        first[k] = arr[i][k];
-                    }
-                    for (int k=0; k<arr[j].length; k++){
-                        second[k] = arr[j][k];
-                    }
-                    int temp = arr[i].length;
-                    arr[i] = new int[arr[j].length];
-                    arr[j] = new int[temp];
-                    for (int k=0; k<second.length; k++){
-                        arr[i][k] = second[k];
-                    }
-                    for (int k=0; k<first.length; k++){
-                        arr[j][k] = first[k];
-                    }
-                }
+
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length - 1; j++) {
+                if (arr[i][j] > arr[i][j + 1]) {
+                    int temp = arr[i][j];
+                    arr[i][j] = arr[i][j];
+                    arr[i][j + 1] = temp;                }
             }
         }
         return arr;
