@@ -144,7 +144,8 @@ public class ArrayTasks {
                 if (arr[i][j] > arr[i][j + 1]) {
                     int temp = arr[i][j];
                     arr[i][j] = arr[i][j];
-                    arr[i][j + 1] = temp;                }
+                    arr[i][j + 1] = temp;
+                }
             }
         }
         return arr;
